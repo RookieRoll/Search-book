@@ -7,7 +7,13 @@
         Source="./View/BookSearch.xaml"
         WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow">
     <!--ResizeMode="CanMinimize"-->
-    <Window.Background>
-        <ImageBrush ImageSource="./Assert/Images/timg.jpg"/>
-    </Window.Background>
+    <NavigationWindow.Resources>
+        <Style TargetType="NavigationWindow">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="./Assert/Images/timg.jpg"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </NavigationWindow.Resources>
 </NavigationWindow>

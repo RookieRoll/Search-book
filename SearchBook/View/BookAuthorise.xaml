@@ -14,13 +14,13 @@
             <RowDefinition Height="156*"/>
         </Grid.RowDefinitions>
         <TextBlock Text="授权码" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="10,22,0,0" Grid.Row="2" TextWrapping="Wrap" 
-                   Text="右键点击图标，选择打开文件所在位置，然后将里面的Mac.txt文件发送给作者，届时将会给你本软件的授权码"
-                   VerticalAlignment="Top" Height="124" Width="280"/>
+      
         <StackPanel Height="75" Margin="10,10,5,0" Grid.Row="1" VerticalAlignment="Top"  Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBox Height="30" Width="200" HorizontalAlignment="Center" Name="authorcode" VerticalContentAlignment="Center"></TextBox>
             <Button Content="授权" Height="30" HorizontalAlignment="Center" Click="Button_Click"></Button>
         </StackPanel>
-
+		  <TextBlock HorizontalAlignment="Center" Margin="10" Grid.Row="2" TextWrapping="Wrap" 
+                   Text="右键点击图标，选择打开文件所在位置，然后将里面的Mac.txt文件发送给作者，届时将会给你本软件的授权码"
+                   VerticalAlignment="Center" Height="124" Width="280"/>
     </Grid>
 </Page>

@@ -14,9 +14,64 @@
         <Style x:Key="searchbox" TargetType="{x:Type Grid}">
             <Setter Property="Height" Value="30"></Setter>
         </Style>
-        <Style x:Key="searchinput" TargetType="{x:Type TextBox}">
-            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
 
+        <Style TargetType="{x:Type Button}" x:Key="searchbtn">
+            <Setter Property="FontWeight" Value="Black"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="0" CornerRadius="0,15,15,0" Name="PART_Background">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="White" Offset="0.0" />
+                                    <GradientStop Color="LightGray" Offset="0.5" />
+                                    <GradientStop Color="White" Offset="0.0" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="RoutedCornerTextBoxStyle" BasedOn="{x:Null}" TargetType="{x:Type TextBox}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10,0,0,0"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="Bd" SnapsToDevicePixels="True"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="15,0,0,15"
+                                >
+                            <ScrollViewer x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"></ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <!--清除按钮样式-->
+        <Style x:Key="clearBtn" TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="Red"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <ContentPresenter Content="{TemplateBinding ContentControl.Content}"/>
+                        
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Page.Resources>
     <Grid Name="searchdate" Style="{StaticResource searchpanel}">
@@ -24,13 +79,22 @@
             <RowDefinition Height="19*"/>
             <RowDefinition Height="81*"/>
         </Grid.RowDefinitions>
+
         <Grid Grid.Row="0" Style="{StaticResource searchbox}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="8*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-            <TextBox Grid.Column="0" Text="{Binding Path=Message}" Style="{StaticResource searchinput}"/>
-            <Button Content="搜索" Command="{Binding Path=GetBookListCommand}" Grid.Column="1"/>
+            <TextBox Grid.Column="0" Text="{Binding Path=Message}"
+                     Style="{StaticResource RoutedCornerTextBoxStyle}"
+                     KeyDown="TextBox_KeyDown"
+                     />
+            <Button Content="搜索" Command="{Binding Path=GetBookListCommand}" Grid.Column="1" 
+                    Style="{StaticResource searchbtn}" />
+            <Button Content="X" HorizontalAlignment="Right" Margin="241,6,0,0"
+                    VerticalAlignment="Top" Width="18"
+                    Style="{StaticResource clearBtn}"
+                    RenderTransformOrigin="3.556,0.333" Click="Button_Click"/>
         </Grid>
 
         <ListView Grid.Row="1" ItemsSource="{Binding Path=Books}" SelectionChanged="ListView_SelectionChanged">

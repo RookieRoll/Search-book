@@ -25,7 +25,7 @@ namespace SearchBook.View
         private BookSearchViewModel booksearch = new BookSearchViewModel();
         public BookSearch()
         {
-         
+
             InitializeComponent();
             if (TempDate.Books != null && TempDate.Books.Count != 0 && !string.IsNullOrWhiteSpace(TempDate.Message))
             {
@@ -51,7 +51,7 @@ namespace SearchBook.View
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
             BookDetail detail = new BookDetail();
             if (this.NavigationService != null)
             {
@@ -65,7 +65,7 @@ namespace SearchBook.View
             var code = Properties.Settings.Default.Authorise;
             if (!string.IsNullOrWhiteSpace(code))
             {
-                var author=MD5EncryptionTools.MD5Encryption(MacTools.GetMacString().Replace(':','-'));
+                var author = MD5EncryptionTools.MD5Encryption(MacTools.GetMacString().Replace(':', '-'));
                 var temp = MD5EncryptionTools.GetSHA256HashFromString(author);
                 if (code.Equals(temp))
                     return;
@@ -74,6 +74,20 @@ namespace SearchBook.View
             {
                 this.NavigationService.Navigate(new BookAuthorise());
             }
+        }
+
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            this.booksearch.Message = (sender as TextBox).Text;
+            if (e.Key == Key.Enter)
+            {
+                this.booksearch.GetBookListCommand.Execute(this.booksearch.Message);
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("清空");
         }
     }
 }
