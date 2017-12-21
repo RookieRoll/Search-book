@@ -87,7 +87,41 @@ namespace SearchBook.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("清空");
+            this.booksearch.Message = string.Empty;
+            this.clearBtn.Visibility = Visibility.Hidden;
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var input = (sender as TextBox).Text;
+            if (string.IsNullOrWhiteSpace(input))
+                this.clearBtn.Visibility = Visibility.Hidden;
+            else
+                this.clearBtn.Visibility = Visibility.Visible;
+        }
+
+        private async void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var temp = (sender as DataGrid).CurrentItem as BookList;
+            if (temp == null)
+                return;
+            TempDate cache = new TempDate();
+            try
+            {
+                TempDate.Message = this.booksearch.Message;
+                TempDate.Books = this.booksearch.Books;
+                await cache.SaveBook(temp.Id, this.booksearch.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            BookDetail detail = new BookDetail();
+            if (this.NavigationService != null)
+            {
+                this.NavigationService.Navigate(detail);
+            }
         }
     }
 }

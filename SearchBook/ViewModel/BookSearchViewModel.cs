@@ -47,6 +47,7 @@ namespace SearchBook.ViewModel
         {
             GetBookListCommand = new RelayCommand(async () =>
             {
+                if (string.IsNullOrWhiteSpace(this.Message)) return;
                 var temp =await service.SearchAsync(this.Message,0,999);
                 this.Books = temp.Select(BookList.ConvertToBookList).ToList();
             });

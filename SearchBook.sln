@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchBook", "SearchBook\SearchBook.csproj", "{ED3461BF-6F18-41FC-9609-83084587A9A4}"
 EndProject
@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{88761B
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootstrapWpfStyle", "BootstrapWpfStyle\BootstrapWpfStyle.csproj", "{1C0F2E8B-E47B-4581-9D0A-A90BD88D204E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,8 +36,15 @@ Global
 		{B49A32DF-C040-4FF4-8937-D956806067A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B49A32DF-C040-4FF4-8937-D956806067A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B49A32DF-C040-4FF4-8937-D956806067A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C0F2E8B-E47B-4581-9D0A-A90BD88D204E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C0F2E8B-E47B-4581-9D0A-A90BD88D204E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C0F2E8B-E47B-4581-9D0A-A90BD88D204E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C0F2E8B-E47B-4581-9D0A-A90BD88D204E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7EBB8E6D-D23F-41C2-8B3E-12C6CD838B19}
 	EndGlobalSection
 EndGlobal
