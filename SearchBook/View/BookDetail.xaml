@@ -1,0 +1,67 @@
+﻿<Page x:Class="SearchBook.View.BookDetail"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+	Title="BookDetail">
+    <Page.Resources>
+        <Style x:Key="detailpanel" TargetType="{x:Type Grid}">
+            <Setter Property="Margin" Value="5"></Setter>
+        </Style>
+        <Style x:Key="detailtitle" TargetType="{x:Type TextBlock}">
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+            <Setter Property="TextAlignment" Value="Center"></Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
+        </Style>
+        <Style x:Key="detailauthor" TargetType="{x:Type TextBlock}">
+            <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="0,0,10,0"></Setter>
+        </Style>
+    </Page.Resources>
+    <Grid Name="bookdetailpanel" Style="{StaticResource detailpanel}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="18*"/>
+                <RowDefinition Height="7*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Style="{StaticResource detailtitle}" TextWrapping="Wrap" 
+                    Text="{Binding Path=Title}"
+                       Grid.Row="0" ></TextBlock>
+            <TextBlock Style="{StaticResource detailauthor}"
+                       Text="{Binding Path=Author}" Grid.Row="1">
+            </TextBlock>
+        </Grid>
+
+        <StackPanel Grid.Row="1" Margin="0,10,0,0">
+            <TextBlock Text="{Binding Path=ShortIntro}" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"></TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <GroupBox>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="最新章节：" Margin="0,6,0,0"></Label>
+                    <TextBlock Text="{Binding Path=LastChapter}" VerticalAlignment="Center" Margin="0,12,0,8" ></TextBlock>
+                </StackPanel>
+            </GroupBox>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="全文下载" Click="Button_Click_1" IsEnabled="{Binding Success}"></Button>
+                <Button Content="返回" Click="Button_Click"  IsEnabled="{Binding Success}"></Button>
+                <Button Content="{Binding DownLoadType}" Command="{Binding TypeCommand}" IsEnabled="{Binding Success}"></Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Name="ProgressBar" Visibility="Hidden">
+                <ProgressBar Maximum="100" Minimum="0" Height="10" MinWidth="290" Name="bar" Value="{Binding Progress}"></ProgressBar>
+                <TextBlock Text="{Binding Tip}" ></TextBlock>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
