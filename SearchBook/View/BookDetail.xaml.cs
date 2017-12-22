@@ -79,7 +79,7 @@ namespace SearchBook.View
             {
                 this.bookDetail.Success = false;
                 this.ProgressBar.Visibility = Visibility.Visible;
-                
+
                 //获得文件路径
                 localFilePath = saveFileDialog.FileName.ToString();
 
@@ -95,16 +95,16 @@ namespace SearchBook.View
                            var content = await this.bookDetail.GetBookContent();
                            //为用户使用 SaveFileDialog 选定的文件名创建读/写文件流。
                            File.WriteAllText(localFilePath, content); //这里的文件名其实是含有路径的。
-                           
-                           MessageBox.Show("下载完成");
+                           MessageBox.Show("下载成功", "完成", MessageBoxButton.OK, MessageBoxImage.Information);
                        }
                        catch (Exception ex)
                        {
-                           MessageBox.Show(ex.Message);
+                           MessageBox.Show("下载出错，请重试", "发生错误", MessageBoxButton.OK, MessageBoxImage.Error);
                            return;
                        }
                        finally
                        {
+                           this.ProgressBar.Visibility = Visibility.Hidden;
                            this.bookDetail.Success = true;
                        }
                    });

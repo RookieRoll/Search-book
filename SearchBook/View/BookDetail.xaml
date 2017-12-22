@@ -17,6 +17,7 @@
             <Setter Property="TextWrapping" Value="Wrap"></Setter>
             <Setter Property="TextAlignment" Value="Center"></Setter>
             <Setter Property="FontSize" Value="18"></Setter>
+            <Setter Property="FontWeight" Value="Black" />
         </Style>
         <Style x:Key="detailauthor" TargetType="{x:Type TextBlock}">
             <Setter Property="HorizontalAlignment" Value="Right"></Setter>
@@ -43,24 +44,23 @@
             </TextBlock>
         </Grid>
 
-        <StackPanel Grid.Row="1" Margin="0,10,0,0">
-            <TextBlock Text="{Binding Path=ShortIntro}" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"></TextBlock>
-        </StackPanel>
+        <ScrollViewer Grid.Row="1" Margin="0,10,0,0" VerticalScrollBarVisibility="Auto">
+            <TextBlock Text="{Binding Path=ShortIntro}" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Padding="5" LineHeight="5"></TextBlock>
+        </ScrollViewer>
+        
         <StackPanel Grid.Row="2">
             <GroupBox>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="最新章节：" Margin="0,6,0,0"></Label>
-                    <TextBlock Text="{Binding Path=LastChapter}" VerticalAlignment="Center" Margin="0,12,0,8" ></TextBlock>
+                    <Label Content="最新章节：" Style="{DynamicResource h6}"></Label>
+                    <Label Content="{Binding Path=LastChapter}" Style="{DynamicResource h6}"></Label>
                 </StackPanel>
             </GroupBox>
             <StackPanel Orientation="Horizontal">
-                <Button Content="全文下载" Click="Button_Click_1" IsEnabled="{Binding Success}"></Button>
+                <Button Content="下载" Click="Button_Click_1" IsEnabled="{Binding Success}"></Button>
                 <Button Content="返回" Click="Button_Click"  IsEnabled="{Binding Success}"></Button>
-                <Button Content="{Binding DownLoadType}" Command="{Binding TypeCommand}" IsEnabled="{Binding Success}"></Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Name="ProgressBar" Visibility="Hidden">
-                <ProgressBar Maximum="100" Minimum="0" Height="10" MinWidth="290" Name="bar" Value="{Binding Progress}"></ProgressBar>
-                <TextBlock Text="{Binding Tip}" ></TextBlock>
+                <ProgressBar Value="{Binding Progress}" Maximum="100" Minimum="0" Style="{DynamicResource progress-bar-success}" Margin="5" MinWidth="370"></ProgressBar>
             </StackPanel>
         </StackPanel>
     </Grid>

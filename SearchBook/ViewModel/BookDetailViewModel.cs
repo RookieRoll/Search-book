@@ -21,30 +21,9 @@ namespace SearchBook.ViewModel
         private string author;
         private bool success;
         private double progress;
-        private string tip;
-        private string downloadType;
-        private const string StableType = "稳定下载";
-        private const string SpeedType = "极速下载";
+ 
         public RelayCommand TypeCommand { get; set; }
 
-        public string DownLoadType
-        {
-            get { return this.downloadType; }
-            set
-            {
-                this.downloadType = value;
-                base.RaisePropertyChanged("DownLoadType");
-            }
-        }
-        public string Tip
-        {
-            get { return this.tip; }
-            set
-            {
-                this.tip = value;
-                base.RaisePropertyChanged("Tip");
-            }
-        }
         public double Progress
         {
             get { return this.progress; }
@@ -105,18 +84,7 @@ namespace SearchBook.ViewModel
                 base.RaisePropertyChanged("Success");
             }
         }
-        public void RegisterMvvmCommand()
-        {
-            TypeCommand = new RelayCommand(() =>
-              {
-                  this.DownLoadType = this.DownLoadType.Equals(StableType) ? SpeedType : StableType;
-              });
-        }
 
-        public BookDetailViewModel()
-        {
-            RegisterMvvmCommand();
-        }
         public void InitBookDetail()
         {
             var date = TempDate.Book;
@@ -126,8 +94,6 @@ namespace SearchBook.ViewModel
             this.ShortIntro = date.shortIntro;
             this.LastChapter = date.lastChapter;
             this.Success = true;
-            this.Tip = "0";
-            this.DownLoadType = SpeedType;
         }
 
         #region 获取书籍内容
@@ -145,15 +111,8 @@ namespace SearchBook.ViewModel
                 for (var m = range.Item1; m < range.Item2; m++)
                     chapterInfos[m].order = m;
             });
-            List<BookContent> tempChapterInfos; ;
-            if (this.DownLoadType.Equals(SpeedType))
-            {
-                tempChapterInfos = GetChapterContentAsync(chapterInfos).OrderBy(m => m.order).ToList();
-            }
-            else
-            {
-                tempChapterInfos = GetChapterContent(chapterInfos).OrderBy(m => m.order).ToList();
-            }
+            List<BookContent> tempChapterInfos;
+            tempChapterInfos = GetChapterContent(chapterInfos).OrderBy(m => m.order).ToList();
 
             var content = ConvertToContent(tempChapterInfos);
             watch.Stop();
@@ -161,7 +120,7 @@ namespace SearchBook.ViewModel
                 DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"),
                 this.title, watch.ElapsedMilliseconds);
             MyLogsTools.WriteLogs(logs);
-            this.Tip = "下载完成";
+
             return content;
         }
         /// <summary>
@@ -189,11 +148,10 @@ namespace SearchBook.ViewModel
                     content.order = chapters[i].order;
                     list.Add(content);
                     this.Progress = Math.Round(((double)list.Count / length) * 100, 2);
-                    this.Tip = this.Progress.ToString();
                     break;
                 }
             }
-            this.Tip = "正在保存文件";
+
             return list.ToList();
         }
         /// <summary>
@@ -219,7 +177,7 @@ namespace SearchBook.ViewModel
                         isSuccess = true;
                         list.Add(content);
                         this.Progress = Math.Round(((double)list.Count / length) * 100, 2);
-                        this.Tip = this.Progress.ToString();
+
                         break;
                     }
                     if (!isSuccess)
@@ -229,9 +187,13 @@ namespace SearchBook.ViewModel
                 });
             });
             mainTask.Wait();
-            this.Tip = "正在保存文件";
             return list.ToList();
         }
+        /// <summary>
+        /// 并行加同步
+        /// </summary>
+        /// <param name="chapters"></param>
+        /// <returns></returns>
         private IEnumerable<BookContent> GetChapterContent(ChapterInfo[] chapters)
         {
             var length = chapters.Count();
@@ -249,7 +211,7 @@ namespace SearchBook.ViewModel
                     isSuccess = true;
                     list.Add(content);
                     this.Progress = Math.Round(((double)list.Count / length) * 100, 2);
-                    this.Tip = this.Progress.ToString();
+
                     break;
                 }
                 if (!isSuccess)
@@ -257,7 +219,7 @@ namespace SearchBook.ViewModel
                     loopstate.Break();
                 }
             });
-            this.Tip = "正在保存文件";
+
             return list.ToList();
         }
         private string ConvertToContent(List<BookContent> infos)
