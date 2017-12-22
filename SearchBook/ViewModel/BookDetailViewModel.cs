@@ -19,9 +19,15 @@ namespace SearchBook.ViewModel
         private string shortIntro;
         private string lastChapter;
         private string author;
-        private bool success;
+        private bool btnEnable;
         private double progress;
- 
+        private string showProgress;
+
+        public string ShowProgress
+        {
+            get { return this.showProgress; }
+            set { this.showProgress = value;base.RaisePropertyChanged("ShowProgress"); }
+        }
         public RelayCommand TypeCommand { get; set; }
 
         public double Progress
@@ -75,13 +81,13 @@ namespace SearchBook.ViewModel
             set { this.author = value; }
         }
 
-        public bool Success
+        public bool BtnEnable
         {
-            get { return this.success; }
+            get { return this.btnEnable; }
             set
             {
-                this.success = value;
-                base.RaisePropertyChanged("Success");
+                this.btnEnable = value;
+                base.RaisePropertyChanged("BtnEnable");
             }
         }
 
@@ -93,7 +99,8 @@ namespace SearchBook.ViewModel
             this.Title = date.title;
             this.ShortIntro = date.shortIntro;
             this.LastChapter = date.lastChapter;
-            this.Success = true;
+            this.BtnEnable = true;
+            this.ShowProgress = "Hidden";
         }
 
         #region 获取书籍内容

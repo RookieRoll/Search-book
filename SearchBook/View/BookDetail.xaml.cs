@@ -77,8 +77,9 @@ namespace SearchBook.View
             //点了保存按钮进入
             if (result == true)
             {
-                this.bookDetail.Success = false;
-                this.ProgressBar.Visibility = Visibility.Visible;
+                this.bookDetail.BtnEnable = false;
+                //this.ProgressBar.Visibility = Visibility.Visible;
+                this.bookDetail.ShowProgress = "Visible";
 
                 //获得文件路径
                 localFilePath = saveFileDialog.FileName.ToString();
@@ -88,7 +89,8 @@ namespace SearchBook.View
 
                 //获取文件路径，不带文件名
                 FilePath = localFilePath.Substring(0, localFilePath.LastIndexOf("\\"));
-                Task.Factory.StartNew(async () =>
+
+                var p=Task.Run(async () =>
                    {
                        try
                        {
@@ -96,6 +98,7 @@ namespace SearchBook.View
                            //为用户使用 SaveFileDialog 选定的文件名创建读/写文件流。
                            File.WriteAllText(localFilePath, content); //这里的文件名其实是含有路径的。
                            MessageBox.Show("下载成功", "完成", MessageBoxButton.OK, MessageBoxImage.Information);
+                          
                        }
                        catch (Exception ex)
                        {
@@ -104,11 +107,11 @@ namespace SearchBook.View
                        }
                        finally
                        {
-                           this.ProgressBar.Visibility = Visibility.Hidden;
-                           this.bookDetail.Success = true;
+                           this.bookDetail.ShowProgress = "Hidden";
+                           this.bookDetail.BtnEnable = true;
+                           
                        }
                    });
-
             }
 
 
