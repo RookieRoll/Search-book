@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1C0F2E8B-E47B-4581-9D0A-A90BD88D204E}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BootstrapWpfStyle</RootNamespace>
     <AssemblyName>BootstrapWpfStyle</AssemblyName>
@@ -36,6 +36,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
@@ -53,66 +56,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
     <Compile Include="SampleData\SampleDataSource\SampleDataSource.xaml.cs">
       <DependentUpon>SampleDataSource.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Win_Button.xaml.cs">
-      <DependentUpon>Win_Button.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Win_CheckBox.xaml.cs">
-      <DependentUpon>Win_CheckBox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Win_Code.xaml.cs">
-      <DependentUpon>Win_Code.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Win_ComboBox.xaml.cs">
-      <DependentUpon>Win_ComboBox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Win_Contextual.xaml.cs">
-      <DependentUpon>Win_Contextual.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Win_DataGrid.xaml.cs">
-      <DependentUpon>Win_DataGrid.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Win_Glyphicons.xaml.cs">
-      <DependentUpon>Win_Glyphicons.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Win_HAndSmall.xaml.cs">
-      <DependentUpon>Win_HAndSmall.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Win_InputGroup.xaml.cs">
-      <DependentUpon>Win_InputGroup.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Win_Panel.xaml.cs">
-      <DependentUpon>Win_Panel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Win_PasswordBox.xaml.cs">
-      <DependentUpon>Win_PasswordBox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Win_ProgressBar.xaml.cs">
-      <DependentUpon>Win_ProgressBar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Win_RadioButton.xaml.cs">
-      <DependentUpon>Win_RadioButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Win_TextBox.xaml.cs">
-      <DependentUpon>Win_TextBox.xaml</DependentUpon>
-    </Compile>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
     </Compile>
     <Page Include="PathGeometries\Glyphicons.xaml">
       <SubType>Designer</SubType>
@@ -175,62 +120,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\Window.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Win_Button.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Win_CheckBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Win_Code.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Win_ComboBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Win_Contextual.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Win_DataGrid.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Win_Glyphicons.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Win_HAndSmall.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Win_InputGroup.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Win_Panel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Win_PasswordBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Win_ProgressBar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Win_RadioButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Win_TextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

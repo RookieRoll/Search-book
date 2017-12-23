@@ -34,6 +34,8 @@ namespace SearchBook.View
                 booksearch.Books = TempDate.Books;
             }
             this.searchdate.DataContext = this.booksearch;
+            //Properties.Settings.Default.Authorise = string.Empty;
+            //Properties.Settings.Default.Save();
         }
 
         private async void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
