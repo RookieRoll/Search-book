@@ -119,8 +119,10 @@ namespace SearchBook.View
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            ChapterGroup group = new ChapterGroup(this.bookDetail.Id);
-            group.Show();
+            if (this.NavigationService != null)
+            {
+                this.NavigationService.Navigate(new ChapterGroupPage(this.bookDetail.Id));
+            }
         }
 
 

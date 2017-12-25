@@ -11,5 +11,7 @@ namespace SearchBook
         public const string BookCache = "BookCache";
         public const string MessageCache = "MessageCache";
         public const string SearchCache = "SearchCache";
+        public const string ChapterGroup = "ChapterGroup";
+        public const string CurrentIndex = "SearchCache";
     }
 }

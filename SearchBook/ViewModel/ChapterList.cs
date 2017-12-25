@@ -10,7 +10,7 @@ namespace SearchBook.ViewModel
     {
         private string title;
         private string link;
-
+        public int order { get; set; }
         public string Title { get { return this.title; } set { this.title = value; base.RaisePropertyChanged("Title"); } }
         public string Link { get { return this.link; } set { this.link = value; base.RaisePropertyChanged("Link"); } }
     }

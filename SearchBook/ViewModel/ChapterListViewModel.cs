@@ -17,11 +17,11 @@ namespace SearchBook.ViewModel
         public async Task GetChapterGroup(string id)
         {
             var chapter = await _service.GetMixBookSourceAsync(id);
-            this.ChapterGroup = chapter.mixToc.chapters.OrderBy(m=>m.order).Select(m => new ChapterList
+            this.ChapterGroup = chapter.mixToc.chapters.OrderBy(m => m.order).Select(m => new ChapterList
             {
                 Title=m.title,
                 Link=m.link
-            }).AsParallel().ToList();
+            }).ToList();
         }
     }
 }

@@ -137,9 +137,6 @@
     <Compile Include="View\BookSearch.xaml.cs">
       <DependentUpon>BookSearch.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ChapterGroup.xaml.cs">
-      <DependentUpon>ChapterGroup.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\ChapterGroupPage.xaml.cs">
       <DependentUpon>ChapterGroupPage.xaml</DependentUpon>
     </Compile>
@@ -164,10 +161,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\BookSearch.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\ChapterGroup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

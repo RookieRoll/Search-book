@@ -30,5 +30,17 @@ namespace SearchBook.View
             this.chapterlist.DataContext = _chapter;
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService?.GoBack();
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var index = (sender as ListBox).SelectedIndex;
+            CacheHelper.SetCache(Keyword.ChapterGroup, _chapter.ChapterGroup);
+            if (NavigationService != null)
+                NavigationService.Navigate(new Page());
+        }
     }
 }

@@ -6,28 +6,40 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
 	Title="ChapterGroupPage">
-    <!--<Page.Resources>
-        <Style x:Key="menu" TargetType="{x:Type ListBoxItem}">
-            <Setter Property="Margin" Value="5"></Setter>
+  
+    <Page.Resources>
+        <!--返回按钮样式-->
+        <Style x:Key="backBtn" TargetType="{x:Type Button}">
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                        <Border BorderBrush="Black" BorderThickness="0,0,0,1" Padding="5">
-                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" />
-                        </Border>
+                    <ControlTemplate>
+                        <ContentPresenter Content="{TemplateBinding ContentControl.Content}"/>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
-    </Page.Resources>-->
- 
-    <StackPanel Name="chapterlist">
-        <ListBox ItemsSource="{Binding ChapterGroup}" >
+    </Page.Resources>
+
+    <Grid Name="chapterlist">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="37*"/>
+            <RowDefinition Height="263*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0"  Orientation="Horizontal">
+            <Button Content="&lt; 返回"  Style="{StaticResource backBtn}" Click="Button_Click" >
+            </Button>
+            <Label Content="目录"  Margin="150,0,0,0"
+                   Style="{StaticResource h4}" Height="37"   VerticalContentAlignment="Center"
+                  ></Label>
+        </StackPanel>
+        <ListBox ItemsSource="{Binding ChapterGroup}" Grid.Row="1" SelectionChanged="ListBox_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Title}"></TextBlock>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-    </StackPanel>
+    </Grid>
 </Page>
