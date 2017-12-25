@@ -116,7 +116,5 @@ namespace SearchBook.View
 
 
         }
-
-
     }
 }

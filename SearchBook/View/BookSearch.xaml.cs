@@ -25,57 +25,26 @@ namespace SearchBook.View
         private BookSearchViewModel booksearch = new BookSearchViewModel();
         public BookSearch()
         {
-
             InitializeComponent();
-            if (TempDate.Books != null && TempDate.Books.Count != 0 && !string.IsNullOrWhiteSpace(TempDate.Message))
+            var books = CacheHelper.GetCache(Keyword.SearchCache) as List<BookList>;
+            var message = CacheHelper.GetCache(Keyword.MessageCache) as string;
+            if (books != null && books.Count != 0 && !string.IsNullOrWhiteSpace(message))
             {
-
-                booksearch.Message = TempDate.Message;
-                booksearch.Books = TempDate.Books;
+                booksearch.Message = message;
+                booksearch.Books = books;
             }
             this.searchdate.DataContext = this.booksearch;
             //Properties.Settings.Default.Authorise = string.Empty;
             //Properties.Settings.Default.Save();
         }
 
-        private async void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-            var temp = e.AddedItems[0] as BookList;
-            TempDate cache = new TempDate();
-            try
-            {
-                TempDate.Message = this.booksearch.Message;
-                TempDate.Books = this.booksearch.Books;
-                await cache.SaveBook(temp.Id, this.booksearch.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            BookDetail detail = new BookDetail();
-            if (this.NavigationService != null)
-            {
-                this.NavigationService.Navigate(detail);
-            }
-
-        }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            var code = Properties.Settings.Default.Authorise;
-            if (!string.IsNullOrWhiteSpace(code))
-            {
-                var author = MD5EncryptionTools.MD5Encryption(MacTools.GetMacString().Replace(':', '-'));
-                var temp = MD5EncryptionTools.GetSHA256HashFromString(author);
-                if (code.Equals(temp))
-                    return;
-            }
+            if (AuthorizationTools.IsAuthorization())
+                return;
             if (this.NavigationService != null)
-            {
                 this.NavigationService.Navigate(new BookAuthorise());
-            }
         }
 
         private void TextBox_KeyDown(object sender, KeyEventArgs e)
@@ -107,11 +76,11 @@ namespace SearchBook.View
             var temp = (sender as DataGrid).CurrentItem as BookList;
             if (temp == null)
                 return;
-            TempDate cache = new TempDate();
+            BookCacheHelper cache = new BookCacheHelper();
             try
             {
-                TempDate.Message = this.booksearch.Message;
-                TempDate.Books = this.booksearch.Books;
+                CacheHelper.SetCache(Keyword.MessageCache, this.booksearch.Message);
+                CacheHelper.SetCache(Keyword.SearchCache, this.booksearch.Books);
                 await cache.SaveBook(temp.Id, this.booksearch.Message);
             }
             catch (Exception ex)
