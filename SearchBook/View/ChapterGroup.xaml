@@ -1,0 +1,10 @@
+﻿<NavigationWindow x:Class="SearchBook.View.ChapterGroup"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="目录" Height="400" Width="410" MinWidth="400" 
+        ResizeMode="CanMinimize"
+        ShowsNavigationUI="False"
+        Source="./ChapterGroupPage.xaml"
+        WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow">
+
+</NavigationWindow>

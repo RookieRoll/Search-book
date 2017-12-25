@@ -58,6 +58,7 @@
             <StackPanel Orientation="Horizontal">
                 <Button Content="下载" Click="Button_Click_1" IsEnabled="{Binding BtnEnable}"></Button>
                 <Button Content="返回" Click="Button_Click"  IsEnabled="{Binding BtnEnable}"></Button>
+                <Button Content="目录"  IsEnabled="{Binding BtnEnable}" Click="Button_Click_2"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Name="ProgressBar" Visibility="{Binding ShowProgress}">
                 <ProgressBar  Value="{Binding Progress}" Maximum="100" Minimum="0" Style="{DynamicResource progress-bar-success}" Margin="5" MinWidth="370"></ProgressBar>
