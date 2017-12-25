@@ -93,7 +93,7 @@ namespace SearchBook.ViewModel
 
         public void InitBookDetail()
         {
-            var date = TempDate.Book;
+            var date =CacheHelper.GetCache(Keyword.BookCache) as BookInfo;
             this.Author = date.author;
             this.Id = date._id;
             this.Title = date.title;

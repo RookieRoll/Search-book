@@ -21,7 +21,7 @@
         </Style>
     </Page.Resources>
     <StackPanel>
-        <ListBox Selected="ListBox_Selected">
+        <ListBox>
             <ListBox.ItemsSource>
                 <CompositeCollection>
                     <ListBoxItem Content="adfasd" Style="{StaticResource menu}"/>

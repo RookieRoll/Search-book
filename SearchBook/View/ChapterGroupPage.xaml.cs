@@ -25,14 +25,5 @@ namespace SearchBook.View
             InitializeComponent();
         }
 
-        private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ListBox_Selected(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

@@ -115,8 +115,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BookCacheHelper.cs" />
     <Compile Include="CacheHelper.cs" />
-    <Compile Include="TempDate.cs" />
+    <Compile Include="Keyword.cs" />
+    <Compile Include="Tools\AuthorizationTools.cs" />
     <Compile Include="Tools\MacTools.cs" />
     <Compile Include="Tools\MD5EncryptionTools.cs" />
     <Compile Include="Tools\MyLogsTools.cs" />

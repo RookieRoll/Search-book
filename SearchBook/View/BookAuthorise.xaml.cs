@@ -24,7 +24,7 @@ namespace SearchBook.View
         public BookAuthorise()
         {
             InitializeComponent();
-            using (var writer=new StreamWriter(new FileStream("Mac.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite)))
+            using (var writer = new StreamWriter(new FileStream("Mac.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite)))
             {
                 var str = MacTools.GetMacString();
                 writer.WriteLine(str);
@@ -34,13 +34,11 @@ namespace SearchBook.View
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             var code = this.authorcode.Text.Trim();
-            if (!string.IsNullOrWhiteSpace(code))
-            {
-                Properties.Settings.Default.Authorise = code;
-                Properties.Settings.Default.Save();
-                if (this.NavigationService != null)
-                    this.NavigationService.Navigate(new BookSearch());
-            }
+            if (!AuthorizationTools.SetAuthorizationCode(code))
+                return;
+            if (this.NavigationService != null)
+                this.NavigationService.Navigate(new BookSearch());
+
         }
     }
 }

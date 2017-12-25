@@ -17,7 +17,7 @@ namespace SearchBook.Tools
             ManagementClass mc = new ManagementClass("Win32_NetworkAdapterConfiguration");
 
             ManagementObjectCollection moc2 = mc.GetInstances();
-
+           
             foreach (ManagementObject mo in moc2)
             {
 
