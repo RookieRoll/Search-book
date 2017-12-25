@@ -126,6 +126,8 @@
     <Compile Include="ViewModel\BookDetailViewModel.cs" />
     <Compile Include="ViewModel\BookList.cs" />
     <Compile Include="ViewModel\BookSearchViewModel.cs" />
+    <Compile Include="ViewModel\ChapterList.cs" />
+    <Compile Include="ViewModel\ChapterListViewModel.cs" />
     <Compile Include="View\BookAuthorise.xaml.cs">
       <DependentUpon>BookAuthorise.xaml</DependentUpon>
     </Compile>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SearchBook.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,13 @@ namespace SearchBook.View
     /// </summary>
     public partial class ChapterGroupPage : Page
     {
-        public ChapterGroupPage()
+        private readonly ChapterListViewModel _chapter = new ChapterListViewModel();
+        public ChapterGroupPage(string id)
         {
             InitializeComponent();
+
+            _chapter.GetChapterGroup(id).GetAwaiter();
+            this.chapterlist.DataContext = _chapter;
         }
 
     }

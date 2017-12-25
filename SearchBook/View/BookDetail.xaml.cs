@@ -119,7 +119,7 @@ namespace SearchBook.View
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            ChapterGroup group = new ChapterGroup();
+            ChapterGroup group = new ChapterGroup(this.bookDetail.Id);
             group.Show();
         }
 

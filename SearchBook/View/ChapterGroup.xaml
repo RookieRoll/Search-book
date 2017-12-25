@@ -4,7 +4,7 @@
         Title="目录" Height="400" Width="410" MinWidth="400" 
         ResizeMode="CanMinimize"
         ShowsNavigationUI="False"
-        Source="./ChapterGroupPage.xaml"
+        
         WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow">
 
 </NavigationWindow>

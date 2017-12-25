@@ -20,9 +20,13 @@ namespace SearchBook.View
     /// </summary>
     public partial class ChapterGroup : NavigationWindow
     {
-        public ChapterGroup()
+        public ChapterGroup(string id)
         {
             InitializeComponent();
+            if (this.NavigationService != null)
+            {
+                this.NavigationService.Navigate(new ChapterGroupPage(id));
+            }
         }
     }
 }
