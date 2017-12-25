@@ -117,7 +117,7 @@
     </ApplicationDefinition>
     <Compile Include="BookCacheHelper.cs" />
     <Compile Include="CacheHelper.cs" />
-    <Compile Include="Keyword.cs" />
+    <Compile Include="Tools\Keyword.cs" />
     <Compile Include="Tools\AuthorizationTools.cs" />
     <Compile Include="Tools\MacTools.cs" />
     <Compile Include="Tools\MD5EncryptionTools.cs" />
