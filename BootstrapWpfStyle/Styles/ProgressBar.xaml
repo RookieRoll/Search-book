@@ -67,4 +67,5 @@
     <Style x:Key="progress-bar-danger" BasedOn="{StaticResource ProgressBarBaseStyle}" TargetType="{x:Type ProgressBar}">
         <Setter Property="Foreground" Value="{DynamicResource Background-Danger1}"/>
     </Style>
+    
 </ResourceDictionary>

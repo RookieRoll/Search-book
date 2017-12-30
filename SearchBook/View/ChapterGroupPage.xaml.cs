@@ -25,7 +25,6 @@ namespace SearchBook.View
         public ChapterGroupPage(string id)
         {
             InitializeComponent();
-
             _chapter.GetChapterGroup(id).GetAwaiter();
             this.chapterlist.DataContext = _chapter;
         }
@@ -35,12 +34,13 @@ namespace SearchBook.View
             NavigationService?.GoBack();
         }
 
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void MenuClick(object sender, SelectionChangedEventArgs e)
         {
             var index = (sender as ListBox).SelectedIndex;
             CacheHelper.SetCache(Keyword.ChapterGroup, _chapter.ChapterGroup);
             if (NavigationService != null)
-                NavigationService.Navigate(new Page());
+                NavigationService.Navigate(new ChapterContentPage(index));
         }
+
     }
 }

@@ -2,16 +2,17 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:BootstrapWpfStyle.Components;assembly=BootstrapWpfStyle"
+      mc:Ignorable="d"
 	Title="ChapterGroupPage">
-  
+
     <Page.Resources>
         <!--返回按钮样式-->
         <Style x:Key="backBtn" TargetType="{x:Type Button}">
             <Setter Property="VerticalAlignment" Value="Center"></Setter>
             <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Margin" Value="15,0,0,0" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate>
@@ -19,6 +20,61 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+        </Style>
+
+        <!--表头-->
+        <Style x:Key="listHead" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Visibility" Value="Collapsed" />
+        </Style>
+        <Style x:Key="listItem" TargetType="{x:Type ListViewItem}">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Width" Value="350"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="MinHeight" Value="25" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="Padding" Value="3,0,0,0"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                        <Border x:Name="Bd" Background="{TemplateBinding Background}" SnapsToDevicePixels="true" Margin="{TemplateBinding Margin}"
+                                BorderThickness="0,0,0,0.1" BorderBrush="Gray">
+                            <Grid x:Name="PART_Root" Margin="{TemplateBinding Padding}">
+                                <GridViewRowPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                <ContentPresenter x:Name="contentPresenter" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Visibility="Collapsed" />
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="Bd" Property="Background" Value="LightGray" />
+                            </Trigger>
+                            <Trigger Property="GridView.ColumnCollection" Value="{x:Null}">
+                                <Setter TargetName="contentPresenter" Property="Visibility" Value="Visible" />
+                            </Trigger>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                <Setter Property="Background" Value="LightGray" />
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="true" />
+                                    <Condition Property="Selector.IsSelectionActive" Value="True" />
+                                </MultiTrigger.Conditions>
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsEnabled" Value="False" />
+                                    <Condition Property="IsSelected" Value="True" />
+                                </MultiTrigger.Conditions>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="menuList" TargetType="{x:Type ListView}">
+            <Setter Property="ItemContainerStyle" Value="{StaticResource listItem}"></Setter>
         </Style>
     </Page.Resources>
 
@@ -34,12 +90,22 @@
                    Style="{StaticResource h4}" Height="37"   VerticalContentAlignment="Center"
                   ></Label>
         </StackPanel>
-        <ListBox ItemsSource="{Binding ChapterGroup}" Grid.Row="1" SelectionChanged="ListBox_SelectionChanged">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Title}"></TextBlock>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <ListView ItemsSource="{Binding ChapterGroup}" SelectionChanged="MenuClick" Style="{StaticResource menuList}" Grid.Row="1">
+            <ListView.View>
+                <GridView ColumnHeaderContainerStyle="{StaticResource listHead}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Title}" ></GridViewColumn>
+                </GridView>
+            </ListView.View>
+           
+        </ListView>
+        <local:LoadingPage  LoadingText="加载中..."
+                                 LoadCirclesMargin="0"
+                                 LoadingTextFontSize="5"
+                                 LoadingTextForeground="White"
+                                 CirclesBrush="Black"
+                                 x:Name="loadMask" 
+                                 Visibility="Collapsed"
+                                 ></local:LoadingPage>
+
     </Grid>
 </Page>

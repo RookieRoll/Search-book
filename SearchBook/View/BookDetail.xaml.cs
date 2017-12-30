@@ -41,10 +41,9 @@ namespace SearchBook.View
 
             if (this.NavigationService != null)
             {
-                BookSearch search = new BookSearch();
                 if (this.NavigationService != null)
                 {
-                    this.NavigationService.Navigate(search);
+                    this.NavigationService.Navigate(new BookSearch());
                 }
             }
         }
@@ -119,12 +118,13 @@ namespace SearchBook.View
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            CacheHelper.SetCache(Keyword.BookId, this.bookDetail.Id);
             if (this.NavigationService != null)
             {
                 this.NavigationService.Navigate(new ChapterGroupPage(this.bookDetail.Id));
             }
         }
 
-
+       
     }
 }

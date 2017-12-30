@@ -32,7 +32,8 @@ namespace SearchBook.Tools
 
         private static string GetAuthorizationCode()
         {
-            var encrypt = MD5EncryptionTools.MD5Encryption(MacTools.GetMacString().Replace(':', '-'));
+            var code = MacTools.GetMacString().Replace(':', '-');
+            var encrypt = MD5EncryptionTools.MD5Encryption(code);
             var encryptCode = MD5EncryptionTools.GetSHA256HashFromString(encrypt);
             return encryptCode;
         }

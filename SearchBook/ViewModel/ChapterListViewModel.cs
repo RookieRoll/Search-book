@@ -1,5 +1,6 @@
 ﻿using SearchBook.Service;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,10 +18,19 @@ namespace SearchBook.ViewModel
         public async Task GetChapterGroup(string id)
         {
             var chapter = await _service.GetMixBookSourceAsync(id);
-            this.ChapterGroup = chapter.mixToc.chapters.OrderBy(m => m.order).Select(m => new ChapterList
+            var chapters = chapter.mixToc.chapters;
+            //var tempList = Partitioner.Create(0, chapters.Count());
+            //Parallel.ForEach(tempList, (range) =>
+            // {
+            //     for (var i = range.Item1; i < range.Item2; i++)
+            //         chapters[i].order = i;
+            // });
+
+            this.ChapterGroup = chapters.Select(m => new ChapterList
             {
-                Title=m.title,
-                Link=m.link
+                Title = m.title,
+                Link = m.link,
+                order = m.order
             }).ToList();
         }
     }

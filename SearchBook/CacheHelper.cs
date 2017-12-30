@@ -20,7 +20,5 @@ namespace SearchBook
             ObjectCache oCache = MemoryCache.Default;
             return oCache.Get(key);
         }
-
-    
     }
 }

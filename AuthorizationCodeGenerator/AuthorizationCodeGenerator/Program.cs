@@ -13,7 +13,9 @@ namespace AuthorizationCodeGenerator
         static void Main(string[] args)
         {
             //var str = GetSHA256HashFromString( MD5Encryption(GetMacString().Replace(':','-')));
-            var mac = Console.ReadLine();
+            var mac = Console.ReadLine().Trim();
+            if (string.IsNullOrWhiteSpace(mac))
+                mac = GetMacString();
             var str = GetSHA256HashFromString(MD5Encryption(mac.Replace(':', '-')));
             Console.WriteLine(str);
             Console.ReadKey();

@@ -42,7 +42,11 @@ namespace SearchBook.View
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             if (AuthorizationTools.IsAuthorization())
+            {
+                this.searchbox.Focus();
                 return;
+            }
+                
             if (this.NavigationService != null)
                 this.NavigationService.Navigate(new BookAuthorise());
         }
@@ -71,9 +75,10 @@ namespace SearchBook.View
                 this.clearBtn.Visibility = Visibility.Visible;
         }
 
-        private async void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+        private async void SelectResult(object sender, RoutedEventArgs e)
         {
-            var temp = (sender as DataGrid).CurrentItem as BookList;
+            var temp = (sender as ListBox).SelectedItem as BookList;
             if (temp == null)
                 return;
             BookCacheHelper cache = new BookCacheHelper();
@@ -94,5 +99,6 @@ namespace SearchBook.View
                 this.NavigationService.Navigate(detail);
             }
         }
+ 
     }
 }
