@@ -2,23 +2,19 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Search Book"
-#define MyAppVersion "1.0.171222"
-#define MyAppPublisher "KoBold, Inc."
-#define MyAppURL "null"
+#define MyAppVersion "1.0.171230"
+#define MyAppPublisher "Kobold, pri."
 #define MyAppExeName "SearchBook.exe"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{C03AAC0D-7546-4B2E-B11A-9B4521271C92}
+AppId={{6291908C-60A9-433A-A53D-85676801F39E}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
 AppPublisher={#MyAppPublisher}
-AppPublisherURL={#MyAppURL}
-AppSupportURL={#MyAppURL}
-AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
 DisableProgramGroupPage=yes
 OutputBaseFilename=setup

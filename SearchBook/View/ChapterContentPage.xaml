@@ -32,7 +32,7 @@
         </Grid.RowDefinitions>
 
         <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" Name="scroll">
-            <TextBlock Text="{Binding Content}" TextWrapping="Wrap"/>
+            <TextBlock Text="{Binding Content}" TextWrapping="Wrap" LineHeight="25" FontSize="14"/>
         </ScrollViewer>
         <DockPanel Name="titlebox" Grid.Row="1"  Visibility="Visible" >
             <Button Content="=" Click="FuncChange" DockPanel.Dock="Right"  Style="{StaticResource funcswitch}"></Button>

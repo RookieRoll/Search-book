@@ -12,7 +12,7 @@ namespace SearchBook
         public const string MessageCache = "MessageCache";
         public const string SearchCache = "SearchCache";
         public const string ChapterGroup = "ChapterGroup";
-        public const string CurrentIndex = "SearchCache";
+        public const string CurrentIndex = "CurrentIndex";
         public const string BookId = "BookId";
     }
 }

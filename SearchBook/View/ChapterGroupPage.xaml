@@ -28,9 +28,9 @@
         </Style>
         <Style x:Key="listItem" TargetType="{x:Type ListViewItem}">
             <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="Width" Value="350"/>
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Width" Value="350"/>
             <Setter Property="MinHeight" Value="25" />
             <Setter Property="Margin" Value="0" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -83,29 +83,22 @@
             <RowDefinition Height="37*"/>
             <RowDefinition Height="263*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0"  Orientation="Horizontal">
-            <Button Content="&lt; 返回"  Style="{StaticResource backBtn}" Click="Button_Click" >
+        <DockPanel Grid.Row="0"  >
+            <Button Content="&lt; 返回"  Style="{StaticResource backBtn}" Click="Button_Click" DockPanel.Dock="Left">
             </Button>
-            <Label Content="目录"  Margin="150,0,0,0"
-                   Style="{StaticResource h4}" Height="37"   VerticalContentAlignment="Center"
-                  ></Label>
-        </StackPanel>
-        <ListView ItemsSource="{Binding ChapterGroup}" SelectionChanged="MenuClick" Style="{StaticResource menuList}" Grid.Row="1">
+            <TextBlock Text="目录"  VerticalAlignment="Center" HorizontalAlignment="Center"
+            FontSize="18" FontWeight="Black"
+                  ></TextBlock>
+        </DockPanel>
+        <ListView ItemsSource="{Binding ChapterGroup}" SelectionChanged="MenuClick" Style="{StaticResource menuList}" Grid.Row="1" Name="menulist">
             <ListView.View>
                 <GridView ColumnHeaderContainerStyle="{StaticResource listHead}">
-                    <GridViewColumn DisplayMemberBinding="{Binding Title}" ></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Title}" Width="350"></GridViewColumn>
                 </GridView>
             </ListView.View>
            
         </ListView>
-        <local:LoadingPage  LoadingText="加载中..."
-                                 LoadCirclesMargin="0"
-                                 LoadingTextFontSize="5"
-                                 LoadingTextForeground="White"
-                                 CirclesBrush="Black"
-                                 x:Name="loadMask" 
-                                 Visibility="Collapsed"
-                                 ></local:LoadingPage>
+     
 
     </Grid>
 </Page>
