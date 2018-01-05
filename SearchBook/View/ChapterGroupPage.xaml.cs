@@ -31,7 +31,8 @@ namespace SearchBook.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService?.GoBack();
+            if (this.NavigationService != null)
+                this.NavigationService.GoBack();
         }
 
         private void MenuClick(object sender, SelectionChangedEventArgs e)
