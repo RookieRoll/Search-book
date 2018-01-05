@@ -15,7 +15,7 @@ namespace SearchBook.ViewModel
         private int currentIndex;
         public int CurrentIndex
         {
-            get => this.currentIndex;
+            get { return this.currentIndex; }
             set
             {
                 this.currentIndex = value;
@@ -24,7 +24,7 @@ namespace SearchBook.ViewModel
         }
         public string Title
         {
-            get => this.title;
+            get { return this.title; }
             set
             {
                 this.title = value;
@@ -35,7 +35,7 @@ namespace SearchBook.ViewModel
 
         public string Content
         {
-            get => content;
+            get { return this.content; }
             set
             {
                 this.content = value;

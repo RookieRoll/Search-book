@@ -24,6 +24,13 @@
             </Setter>
             <Setter Property="Width" Value="17"/>
         </Style>
+        
+        <Style x:Key="chapterContent" TargetType="{x:Type TextBlock}">
+            <Setter Property="Padding" Value="5,0,3,0"/>
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="LineHeight" Value="20"/>
+            <Setter Property="TextWrapping" Value="Wrap" />
+        </Style>
     </Page.Resources>
     <Grid Name="chapterContentPage" Background='#C7EDCC'>
         <Grid.RowDefinitions>
@@ -32,7 +39,7 @@
         </Grid.RowDefinitions>
 
         <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" Name="scroll">
-            <TextBlock Text="{Binding Content}" TextWrapping="Wrap"/>
+            <TextBlock Text="{Binding Content}"  Style="{StaticResource chapterContent}"/>
         </ScrollViewer>
         <DockPanel Name="titlebox" Grid.Row="1"  Visibility="Visible" >
             <Button Content="=" Click="FuncChange" DockPanel.Dock="Right"  Style="{StaticResource funcswitch}"></Button>

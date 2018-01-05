@@ -33,7 +33,8 @@ namespace SearchBook.View
         private void ShowMenuBtnClick(object sender, RoutedEventArgs e)
         {
             var bookId = CacheHelper.GetCache(Keyword.BookId) as string;
-            this.NavigationService?.Navigate(new ChapterGroupPage(bookId));
+            if (this.NavigationService != null)
+                this.NavigationService.Navigate(new ChapterGroupPage(bookId));
         }
 
         private void NextPageBtnClick(object sender, RoutedEventArgs e)
@@ -63,7 +64,8 @@ namespace SearchBook.View
 
         private void BackHome(object sender, RoutedEventArgs e)
         {
-            this.NavigationService?.Navigate(new BookSearch());
+            if (this.NavigationService != null)
+                this.NavigationService.Navigate(new BookSearch());
         }
     }
 }
