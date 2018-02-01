@@ -28,7 +28,7 @@
         <Style x:Key="chapterContent" TargetType="{x:Type TextBlock}">
             <Setter Property="Padding" Value="5,0,3,0"/>
             <Setter Property="FontSize" Value="14" />
-            <Setter Property="LineHeight" Value="20"/>
+            <Setter Property="LineHeight" Value="30"/>
             <Setter Property="TextWrapping" Value="Wrap" />
         </Style>
     </Page.Resources>
