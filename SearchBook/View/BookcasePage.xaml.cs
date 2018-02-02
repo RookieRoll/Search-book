@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SearchBook.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace SearchBook.View
     /// </summary>
     public partial class BookcasePage : Page
     {
+        private readonly BookCaseListViewModel list = new BookCaseListViewModel();
         public BookcasePage()
         {
             InitializeComponent();
+            list.InitBookCase();
+            this.caselist.DataContext = list;
         }
     }
 }

@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -36,7 +37,7 @@ namespace SearchBook.View
             this.bookdetailpanel.DataContext = bookDetail;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void GoBack(object sender, RoutedEventArgs e)
         {
 
             if (this.NavigationService != null)
@@ -48,7 +49,7 @@ namespace SearchBook.View
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void DownLoadBook(object sender, RoutedEventArgs e)
         {
 
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -89,7 +90,7 @@ namespace SearchBook.View
                 //获取文件路径，不带文件名
                 FilePath = localFilePath.Substring(0, localFilePath.LastIndexOf("\\"));
 
-                var p=Task.Run(async () =>
+                var p = Task.Run(async () =>
                    {
                        try
                        {
@@ -97,7 +98,7 @@ namespace SearchBook.View
                            //为用户使用 SaveFileDialog 选定的文件名创建读/写文件流。
                            File.WriteAllText(localFilePath, content); //这里的文件名其实是含有路径的。
                            MessageBox.Show("下载成功", "完成", MessageBoxButton.OK, MessageBoxImage.Information);
-                          
+
                        }
                        catch (Exception ex)
                        {
@@ -108,7 +109,7 @@ namespace SearchBook.View
                        {
                            this.bookDetail.ShowProgress = "Hidden";
                            this.bookDetail.BtnEnable = true;
-                           
+
                        }
                    });
             }
@@ -116,7 +117,7 @@ namespace SearchBook.View
 
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void ShowMenu(object sender, RoutedEventArgs e)
         {
             CacheHelper.SetCache(Keyword.BookId, this.bookDetail.Id);
             if (this.NavigationService != null)
@@ -125,6 +126,18 @@ namespace SearchBook.View
             }
         }
 
-       
+        private void AddBookCase(object sender, RoutedEventArgs e)
+        {
+            BookCaseViewModel book = new BookCaseViewModel
+            {
+                AuthorName = this.bookDetail.Author,
+                BookName = this.bookDetail.Title,
+                CurrentPage = 0,
+                Id = this.bookDetail.Id
+            };
+            book.AddBook();
+            MessageBox.Show("已成功添加到书架");
+            
+        }
     }
 }

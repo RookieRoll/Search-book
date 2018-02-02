@@ -63,9 +63,10 @@
                 </StackPanel>
             </GroupBox>
             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                <Button Content="下载" Click="Button_Click_1" IsEnabled="{Binding BtnEnable}"></Button>
-                <Button Content="返回" Click="Button_Click"  IsEnabled="{Binding BtnEnable}"></Button>
-                <Button Content="目录"  IsEnabled="{Binding BtnEnable}" Click="Button_Click_2"/>
+                <Button Content="下载" Click="DownLoadBook" IsEnabled="{Binding BtnEnable}"></Button>
+                <Button Content="返回" Click="GoBack"  IsEnabled="{Binding BtnEnable}"></Button>
+                <Button Content="目录"  IsEnabled="{Binding BtnEnable}" Click="ShowMenu"/>
+                <Button Content="加入书架"  IsEnabled="{Binding BtnEnable}" Click="AddBookCase"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Name="ProgressBar" Visibility="{Binding ShowProgress}">
                 <ProgressBar  Value="{Binding Progress}"  Style="{DynamicResource myprogressbar}" ></ProgressBar>

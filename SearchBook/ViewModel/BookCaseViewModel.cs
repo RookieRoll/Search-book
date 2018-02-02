@@ -20,19 +20,27 @@ namespace SearchBook.ViewModel
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    public class BookCaseViewModel:XmlBaseModel
+    public class BookCaseViewModel : XmlBaseModel
     {
         public string BookName { get; set; }
         public string AuthorName { get; set; }
         public string Id { get; set; }
-        public string CurrentPage { get; set; }
+        public int CurrentPage { get; set; }
+        public DateTime LastModifyTime { get; set; }
 
+        public BookCaseViewModel()
+        {
+            LastModifyTime = DateTime.Now;
+        }
 
         public void AddBook()
         {
-            string url = "";
-            XmlHelper<BookCaseViewModel> util = new XmlHelper<BookCaseViewModel>(url);
-            util.Add(this);
+            XmlHelper<BookCaseViewModel> util = new XmlHelper<BookCaseViewModel>(Keyword.BookCasePath);
+            var book = util.FirstOrDefault(m => m.Id.Equals(this.Id));
+            if (book == null)
+                util.Add(this);
         }
+
+
     }
 }

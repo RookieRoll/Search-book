@@ -46,7 +46,7 @@ namespace SearchBook.View
                 this.searchbox.Focus();
                 return;
             }
-                
+
             if (this.NavigationService != null)
                 this.NavigationService.Navigate(new BookAuthorise());
         }
@@ -64,6 +64,11 @@ namespace SearchBook.View
         {
             this.booksearch.Message = string.Empty;
             this.clearBtn.Visibility = Visibility.Hidden;
+        }
+        private void ToBookCase(object sender, RoutedEventArgs e)
+        {
+            if (this.NavigationService != null)
+                this.NavigationService.Navigate(new BookcasePage());
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -99,6 +104,6 @@ namespace SearchBook.View
                 this.NavigationService.Navigate(detail);
             }
         }
- 
+
     }
 }

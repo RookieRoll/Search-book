@@ -14,5 +14,6 @@ namespace SearchBook
         public const string ChapterGroup = "ChapterGroup";
         public const string CurrentIndex = "CurrentIndex";
         public const string BookId = "BookId";
+        public const string BookCasePath = "bookcase.xml";
     }
 }

@@ -87,7 +87,7 @@
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
         <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Padding" Value="14,0,0,0"/>
+        <Setter Property="Padding" Value="2,0,0,0"/>
         <Setter Property="AllowDrop" Value="true"/>
         <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -112,7 +112,7 @@
         <Setter Property="Foreground" Value="Red"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="Width" Value="10"/>
-        <Setter Property="Margin" Value="241,6,5,0"/>
+        <Setter Property="Margin" Value="0,10,5,0"/>
         <Setter Property="Visibility" Value="Hidden"/>
         <Setter Property="HorizontalAlignment" Value="Right"/>
         <Setter Property="Template">

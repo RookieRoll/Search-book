@@ -127,6 +127,7 @@
     <Compile Include="Tools\MD5EncryptionTools.cs" />
     <Compile Include="Tools\MyLogsTools.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\BookCaseListViewModel.cs" />
     <Compile Include="ViewModel\BookCaseViewModel.cs">
       <SubType>Code</SubType>
     </Compile>

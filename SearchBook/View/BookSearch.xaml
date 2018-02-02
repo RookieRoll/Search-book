@@ -26,7 +26,7 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <Button Content="书架" Name="homebtn"  Grid.Column="0" 
-                    Style="{StaticResource homebtn}"  />
+                    Style="{StaticResource homebtn}" Click="ToBookCase" />
             <TextBox Grid.Column="1" Text="{Binding Path=Message}"
                      Style="{StaticResource RoutedCornerTextBoxStyle}"
                      KeyDown="TextBox_KeyDown"
@@ -37,7 +37,7 @@
                     Style="{StaticResource searchbtn}"  />
             <Button Content="X" 
                     Style="{StaticResource clearBtn}" Click="Button_Click"
-                    Name="clearBtn"
+                    Name="clearBtn"  Grid.Column="1"  
                     />
         </Grid>
 
