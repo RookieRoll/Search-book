@@ -28,5 +28,11 @@ namespace SearchBook.View
             list.InitBookCase();
             this.caselist.DataContext = list;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.NavigationService != null)
+                this.NavigationService.Navigate(new BookSearch());
+        }
     }
 }

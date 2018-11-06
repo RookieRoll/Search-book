@@ -6,31 +6,11 @@
       mc:Ignorable="d" 
 	Title="BookDetail">
     <Page.Resources>
-        <Style x:Key="detailpanel" TargetType="{x:Type Grid}">
-            <Setter Property="Margin" Value="5"></Setter>
-        </Style>
-        <Style x:Key="detailtitle" TargetType="{x:Type TextBlock}">
-            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
-            <Setter Property="VerticalAlignment" Value="Center"></Setter>
-            <Setter Property="Height" Value="30"></Setter>
-            <Setter Property="TextWrapping" Value="Wrap"></Setter>
-            <Setter Property="TextAlignment" Value="Center"></Setter>
-            <Setter Property="FontSize" Value="18"></Setter>
-            <Setter Property="FontWeight" Value="Black" />
-        </Style>
-        <Style x:Key="detailauthor" TargetType="{x:Type TextBlock}">
-            <Setter Property="HorizontalAlignment" Value="Right"></Setter>
-            <Setter Property="VerticalAlignment" Value="Center"></Setter>
-            <Setter Property="Margin" Value="0,0,10,0"></Setter>
-        </Style>
-
-        <Style x:Key="myprogressbar" TargetType="{x:Type ProgressBar}" BasedOn="{StaticResource progress-bar-success}">
-            <Setter Property="Height" Value="15" />
-            <Setter Property="Margin" Value="0,5" />
-            <Setter Property="Maximum" Value="100" />
-            <Setter Property="Minimum" Value="0"/>
-            <Setter Property="Width" Value="380"/>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/DetailPageStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Page.Resources>
     <Grid Name="bookdetailpanel" Style="{StaticResource detailpanel}">
         <Grid.RowDefinitions>
@@ -56,17 +36,28 @@
         </ScrollViewer>
         
         <StackPanel Grid.Row="2">
-            <GroupBox>
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="最新章节：" Style="{DynamicResource h6}"></Label>
-                    <Label Content="{Binding Path=LastChapter}" Style="{DynamicResource h6}"></Label>
-                </StackPanel>
-            </GroupBox>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition  Width="5*"></ColumnDefinition>
+                    <ColumnDefinition  Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Content="最新章节：" Style="{DynamicResource h6}" Grid.Column="0" ></Label>
+                <Label Content="{Binding Path=LastChapter}" Style="{DynamicResource h6}" Grid.Column="1" ></Label>
+                <Button Content="目录"  IsEnabled="{Binding BtnEnable}" Click="ShowMenu"  Grid.Column="2" Style="{DynamicResource menuList}" />
+            </Grid>
+            <!--<GroupBox>
+                <DockPanel >
+                    <Label Content="最新章节：" Style="{DynamicResource h6}" DockPanel.Dock="Left"></Label>
+                    <Label Content="{Binding Path=LastChapter}" Style="{DynamicResource h6}" ></Label>
+                    <Button Content="目录"  IsEnabled="{Binding BtnEnable}" Click="ShowMenu" DockPanel.Dock="Right" />
+                </DockPanel>
+            </GroupBox>-->
+           
             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                <Button Content="下载" Click="DownLoadBook" IsEnabled="{Binding BtnEnable}"></Button>
                 <Button Content="返回" Click="GoBack"  IsEnabled="{Binding BtnEnable}"></Button>
-                <Button Content="目录"  IsEnabled="{Binding BtnEnable}" Click="ShowMenu"/>
-                <Button Content="加入书架"  IsEnabled="{Binding BtnEnable}" Click="AddBookCase"/>
+                <!--<Button Content="加入书架"  IsEnabled="{Binding BtnEnable}" Click="AddBookCase"/>-->
+                <Button Content="下载" Click="DownLoadBook" IsEnabled="{Binding BtnEnable}"></Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Name="ProgressBar" Visibility="{Binding ShowProgress}">
                 <ProgressBar  Value="{Binding Progress}"  Style="{DynamicResource myprogressbar}" ></ProgressBar>

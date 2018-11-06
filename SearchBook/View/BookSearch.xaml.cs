@@ -41,6 +41,7 @@ namespace SearchBook.View
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            #if !DEBUG
             if (AuthorizationTools.IsAuthorization())
             {
                 this.searchbox.Focus();
@@ -49,6 +50,7 @@ namespace SearchBook.View
 
             if (this.NavigationService != null)
                 this.NavigationService.Navigate(new BookAuthorise());
+            #endif
         }
 
         private void TextBox_KeyDown(object sender, KeyEventArgs e)

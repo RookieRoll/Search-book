@@ -11,7 +11,8 @@
     <Style TargetType="{x:Type Button}" x:Key="searchbtn">
         <Setter Property="FontWeight" Value="Black"/>
         <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Height" Value="30"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -20,7 +21,7 @@
                             <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                                 <GradientStop Color="White" Offset="0.0" />
                                 <GradientStop Color="LightGray" Offset="0.5" />
-                                <GradientStop Color="White" Offset="0.0" />
+                                <GradientStop Color="White" Offset="1" />
                             </LinearGradientBrush>
                         </Border.Background>
                         <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -34,7 +35,7 @@
                                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                                         <GradientStop Color="White" Offset="0.0" />
                                         <GradientStop Color="Gray" Offset="0.5" />
-                                        <GradientStop Color="White" Offset="0.0" />
+                                        <GradientStop Color="White" Offset="1" />
                                     </LinearGradientBrush>
                                 </Setter.Value>
                             </Setter>
@@ -86,8 +87,9 @@
     <Style x:Key="RoutedCornerTextBoxStyle" BasedOn="{x:Null}" TargetType="{x:Type TextBox}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
         <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Padding" Value="2,0,0,0"/>
+        <Setter Property="Height" Value="30"/>
         <Setter Property="AllowDrop" Value="true"/>
         <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -98,7 +100,7 @@
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="0"
+                                CornerRadius="4,0,0,4"
                                 >
                         <ScrollViewer x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"></ScrollViewer>
                     </Border>
@@ -111,8 +113,8 @@
     <Style x:Key="clearBtn" TargetType="{x:Type Button}">
         <Setter Property="Foreground" Value="Red"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
-        <Setter Property="Width" Value="10"/>
-        <Setter Property="Margin" Value="0,10,5,0"/>
+        <Setter Property="Width" Value="9"/>
+        <Setter Property="Margin" Value="0,8,5,0"/>
         <Setter Property="Visibility" Value="Hidden"/>
         <Setter Property="HorizontalAlignment" Value="Right"/>
         <Setter Property="Template">
@@ -221,5 +223,6 @@
     </Style>
     <Style x:Key="searchList" TargetType="{x:Type ListView}">
         <Setter Property="ItemContainerStyle" Value="{StaticResource searchListItem}"></Setter>
+        
     </Style>
 </ResourceDictionary>

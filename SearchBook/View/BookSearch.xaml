@@ -21,23 +21,22 @@
 
         <Grid Grid.Row="0" Style="{StaticResource searchbox}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="8*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-            <Button Content="书架" Name="homebtn"  Grid.Column="0" 
-                    Style="{StaticResource homebtn}" Click="ToBookCase" />
-            <TextBox Grid.Column="1" Text="{Binding Path=Message}"
+            <!--<Button Content="书架" Name="homebtn"  Grid.Column="0" 
+                    Style="{StaticResource homebtn}" Click="ToBookCase" />-->
+            <TextBox Grid.Column="0" Text="{Binding Path=Message}"
                      Style="{StaticResource RoutedCornerTextBoxStyle}"
                      KeyDown="TextBox_KeyDown"
                      TextChanged="TextBox_TextChanged"
                      Name="searchbox"
                      />
-            <Button Content="搜索" Name="searchbtn" Command="{Binding Path=GetBookListCommand}" Grid.Column="2" 
+            <Button Content="搜索" Name="searchbtn" Command="{Binding Path=GetBookListCommand}" Grid.Column="1" 
                     Style="{StaticResource searchbtn}"  />
             <Button Content="X" 
                     Style="{StaticResource clearBtn}" Click="Button_Click"
-                    Name="clearBtn"  Grid.Column="1"  
+                    Name="clearBtn"  Grid.Column="0"  
                     />
         </Grid>
 
