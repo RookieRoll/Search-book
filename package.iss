@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Search Book"
-#define MyAppVersion "1.0.171230"
+#define MyAppVersion "1.0.181107"
 #define MyAppPublisher "Kobold, pri."
 #define MyAppExeName "SearchBook.exe"
 
@@ -18,7 +18,7 @@ AppPublisher={#MyAppPublisher}
 DefaultDirName={pf}\{#MyAppName}
 DisableProgramGroupPage=yes
 OutputBaseFilename=setup
-SetupIconFile=C:\Users\28076\Downloads\setup.ico
+SetupIconFile=D:\DEMO\C#\Searchbook\Search-book\SearchBook\ico\setup.ico
 Compression=lzma
 SolidCompression=yes
 
@@ -29,24 +29,23 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "E:\我的项目\SearchBook\Search-book\SearchBook\bin\Release\SearchBook.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\我的项目\SearchBook\Search-book\SearchBook\bin\Release\BootstrapWpfStyle.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\我的项目\SearchBook\Search-book\SearchBook\bin\Release\BootstrapWpfStyle.dll.config"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\我的项目\SearchBook\Search-book\SearchBook\bin\Release\CommonServiceLocator.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\我的项目\SearchBook\Search-book\SearchBook\bin\Release\GalaSoft.MvvmLight.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\我的项目\SearchBook\Search-book\SearchBook\bin\Release\GalaSoft.MvvmLight.Extras.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\我的项目\SearchBook\Search-book\SearchBook\bin\Release\GalaSoft.MvvmLight.Extras.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\我的项目\SearchBook\Search-book\SearchBook\bin\Release\GalaSoft.MvvmLight.Platform.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\我的项目\SearchBook\Search-book\SearchBook\bin\Release\GalaSoft.MvvmLight.Platform.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\我的项目\SearchBook\Search-book\SearchBook\bin\Release\GalaSoft.MvvmLight.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\我的项目\SearchBook\Search-book\SearchBook\bin\Release\Newtonsoft.Json.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\我的项目\SearchBook\Search-book\SearchBook\bin\Release\Newtonsoft.Json.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\我的项目\SearchBook\Search-book\SearchBook\bin\Release\SearchBook.application"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\我的项目\SearchBook\Search-book\SearchBook\bin\Release\SearchBook.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\我的项目\SearchBook\Search-book\SearchBook\bin\Release\SearchBook.exe.config"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\我的项目\SearchBook\Search-book\SearchBook\bin\Release\SearchBook.exe.manifest"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\我的项目\SearchBook\Search-book\SearchBook\bin\Release\SearchBook.Service.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\我的项目\SearchBook\Search-book\SearchBook\bin\Release\System.Windows.Interactivity.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\DEMO\C#\Searchbook\Search-book\SearchBook\bin\Release\SearchBook.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\DEMO\C#\Searchbook\Search-book\SearchBook\bin\Release\BootstrapWpfStyle.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\DEMO\C#\Searchbook\Search-book\SearchBook\bin\Release\CommonServiceLocator.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\DEMO\C#\Searchbook\Search-book\SearchBook\bin\Release\GalaSoft.MvvmLight.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\DEMO\C#\Searchbook\Search-book\SearchBook\bin\Release\GalaSoft.MvvmLight.Extras.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\DEMO\C#\Searchbook\Search-book\SearchBook\bin\Release\GalaSoft.MvvmLight.Extras.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\DEMO\C#\Searchbook\Search-book\SearchBook\bin\Release\GalaSoft.MvvmLight.Platform.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\DEMO\C#\Searchbook\Search-book\SearchBook\bin\Release\GalaSoft.MvvmLight.Platform.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\DEMO\C#\Searchbook\Search-book\SearchBook\bin\Release\GalaSoft.MvvmLight.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\DEMO\C#\Searchbook\Search-book\SearchBook\bin\Release\Newtonsoft.Json.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\DEMO\C#\Searchbook\Search-book\SearchBook\bin\Release\Newtonsoft.Json.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\DEMO\C#\Searchbook\Search-book\SearchBook\bin\Release\SearchBook.application"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\DEMO\C#\Searchbook\Search-book\SearchBook\bin\Release\SearchBook.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\DEMO\C#\Searchbook\Search-book\SearchBook\bin\Release\SearchBook.exe.config"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\DEMO\C#\Searchbook\Search-book\SearchBook\bin\Release\SearchBook.exe.manifest"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\DEMO\C#\Searchbook\Search-book\SearchBook\bin\Release\SearchBook.Service.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\DEMO\C#\Searchbook\Search-book\SearchBook\bin\Release\System.Windows.Interactivity.dll"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

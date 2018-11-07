@@ -23,9 +23,12 @@
                 <RowDefinition Height="18*"/>
                 <RowDefinition Height="7*"/>
             </Grid.RowDefinitions>
-            <TextBlock Style="{StaticResource detailtitle}" TextWrapping="Wrap" 
-                    Text="{Binding Path=Title}"
-                       Grid.Row="0" ></TextBlock>
+            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                <Button Content="返回" Click="GoBack"  IsEnabled="{Binding BtnEnable}" Style="{DynamicResource backBtn}"></Button>
+                <TextBlock Style="{StaticResource detailtitle}" TextWrapping="Wrap" 
+                    Text="{Binding Path=Title}" ></TextBlock>
+            </StackPanel>
+           
             <TextBlock Style="{StaticResource detailauthor}"
                        Text="{Binding Path=Author}" Grid.Row="1">
             </TextBlock>
@@ -54,10 +57,9 @@
                 </DockPanel>
             </GroupBox>-->
            
-            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                <Button Content="返回" Click="GoBack"  IsEnabled="{Binding BtnEnable}"></Button>
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0" FlowDirection="RightToLeft">
                 <!--<Button Content="加入书架"  IsEnabled="{Binding BtnEnable}" Click="AddBookCase"/>-->
-                <Button Content="下载" Click="DownLoadBook" IsEnabled="{Binding BtnEnable}"></Button>
+                <Button Content="下载" Click="DownLoadBook" IsEnabled="{Binding BtnEnable}" Style="{DynamicResource downloadbtn}" ></Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Name="ProgressBar" Visibility="{Binding ShowProgress}">
                 <ProgressBar  Value="{Binding Progress}"  Style="{DynamicResource myprogressbar}" ></ProgressBar>

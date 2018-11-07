@@ -7,16 +7,17 @@
     <Style x:Key="detailtitle" TargetType="{x:Type TextBlock}">
         <Setter Property="HorizontalAlignment" Value="Left"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
-        <Setter Property="Height" Value="30"></Setter>
+        <!--<Setter Property="Height" Value="30"></Setter>-->
         <Setter Property="TextWrapping" Value="Wrap"></Setter>
         <Setter Property="TextAlignment" Value="Center"></Setter>
         <Setter Property="FontSize" Value="18"></Setter>
         <Setter Property="FontWeight" Value="Black" />
+        <Setter Property="MaxWidth" Value="300" />
     </Style>
     <Style x:Key="detailauthor" TargetType="{x:Type TextBlock}">
         <Setter Property="HorizontalAlignment" Value="Right"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
-        <Setter Property="Margin" Value="0,0,10,0"></Setter>
+        <Setter Property="Margin" Value="0,0,14,0"></Setter>
     </Style>
 
     <Style x:Key="myprogressbar" TargetType="{x:Type ProgressBar}" BasedOn="{StaticResource progress-bar-success}">
@@ -37,5 +38,28 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+    <Style x:Key="downloadbtn" TargetType="{x:Type Button}" BasedOn="{StaticResource btn-primary}">
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Background" Value="{x:Null}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{x:Null}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="backBtn" TargetType="{x:Type Button}" BasedOn="{StaticResource btn-info}">
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="Foreground" Value="Blue"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{x:Null}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>
